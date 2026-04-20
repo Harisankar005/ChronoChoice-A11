@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoChoice | Minimalist Watch Discovery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo" onclick="navigateTo('home'); return false;">ChronoChoice</a>
+            <div class="nav-links">
+                <a href="#home" onclick="navigateTo('home'); return false;">Home</a>
+                <a href="#discover" onclick="navigateTo('discover'); return false;">Discover</a>
+                <a href="#compare" onclick="navigateTo('compare'); return false;">Compare</a>
+                <a href="#reviews" onclick="navigateTo('reviews'); return false;">Reviews</a>
+                <a href="#about" onclick="navigateTo('about'); return false;">About</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section id="home">
+        <div class="hero">
+            <h1>Precision in Simplicity.</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem;">
+                A curated discovery platform designed to help you choose the right watch with clarity.
+                No clutter, no confusion — just trusted timepieces.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="navigateTo('discover')" class="btn">Start Discovery</button>
+                <button onclick="navigateTo('compare')" class="btn btn-outline">Go to Compare</button>
+            </div>
+        </div>
+
+        <div style="padding-top: 4rem;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Trending Now</h2>
+            <div id="featuredGrid" class="watch-grid">
+            </div>
+        </div>
+    </section>
+
+    <section id="discover" class="hidden">
+        <h2>The Discovery Matrix</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+            Filter watches based on your needs — movement, budget, or lifestyle.
+        </p>
+
+        <div class="controls-bar">
+            <div class="filter-group">
+                <label>Search</label>
+                <input type="text" id="searchInput" placeholder="Search watches...">
+            </div>
+
+            <div class="filter-group">
+                <label>Budget: <span id="budgetValue">₹200,000</span></label>
+                <input type="range" id="budgetSlider" min="1000" max="200000" step="500" value="200000">
+            </div>
+
+            <div class="filter-group">
+                <label>Movement</label>
+                <select id="movementFilter">
+                    <option value="all">All</option>
+                    <option value="Quartz">Quartz</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Solar">Solar</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Sort</label>
+                <select id="sortFilter">
+                    <option value="default">Default</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="watchGrid" class="watch-grid"></div>
+    </section>
+    
+    <section id="compare" class="hidden">
+        <h2>Compare Watches</h2>
+        <p style="color: var(--text-secondary);">
+            Select up to 3 watches to compare side-by-side.
+        </p>
+
+        <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+            <button onclick="clearCompare()" class="btn btn-outline">
+                Clear Compare
+            </button>
+        </div>
+        
+        <div class="compare-table-container">
+            <table class="compare-table">
+                <tbody id="compareTableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="reviews" class="hidden">
+    <h2>Collector Sentiment</h2>
+    <p style="color: var(--text-secondary); margin-bottom: 3rem;">
+        Feedback based on enthusiast experience, reliability, and long-term usage.
+    </p>
+
+    <div class="reviews-grid">
+
+        <div class="review-card">
+            <h3>"F-91W: unbeatable value"</h3>
+            <p>Lightweight, accurate, and iconic. Hard to beat at its price.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Tissot Gentleman impresses"</h3>
+            <p>Swiss precision with premium finishing and an excellent 80-hour reserve.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"G-Shock reliability"</h3>
+            <p>Rugged, durable, and built to survive anything. A true everyday tool watch.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Casio AE1200 is a sleeper hit"</h3>
+            <p>Extremely functional with world time and long battery life. Practical and underrated.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Seiko SNXS wears perfectly"</h3>
+            <p>Compact size with classic styling. The blue dial adds a lot of character.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Hamilton Khaki is pure heritage"</h3>
+            <p>Clean, military-inspired design with a satisfying hand-winding experience.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Speedtimer stands out"</h3>
+            <p>The pale pink dial is unique, and the solar chronograph is very reliable.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"CasiOak is modern G-Shock"</h3>
+            <p>Thin, tough, and stylish. One of the most versatile G-Shocks available.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"DW-5600 is timeless"</h3>
+            <p>Classic square design with proven durability. A benchmark digital watch.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Zenshin feels premium"</h3>
+            <p>Super Titanium build makes it lightweight yet strong. Very refined overall.</p>
+        </div>
+
+    </div>
+</section>
+
+    <section id="about" class="hidden">
+        <div style="max-width: 700px;">
+            <h2>About ChronoChoice</h2>
+
+            <p style="margin-bottom: 1.5rem;">
+                ChronoChoice was built with a simple goal: to help people choose the right watch without confusion.
+                The watch market is filled with overwhelming options, marketing noise, and unreliable listings.
+                This platform cuts through that.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                Every watch listed here is from a trusted brand and sourced from official or verified platforms.
+                There are no replicas, no fakes, and no misleading listings.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                We remain completely unbiased. Watches are not promoted based on sponsorships or commissions.
+                Instead, they are selected based on build quality, reliability, and real-world usability.
+            </p>
+
+            <p>
+                ChronoChoice is designed for clarity — helping you make confident, informed decisions when buying a watch.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; color: var(--text-secondary); font-size: 0.8rem;">
+        <p>&copy; 2026 ChronoChoice Platform</p>
+
+        <a href="https://github.com/Harisankar005/ChronoChoice-A11" target="_blank" class="btn btn-outline">
+            View on GitHub
+        </a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
