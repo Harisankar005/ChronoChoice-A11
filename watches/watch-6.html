@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casio A168WA-1 | ChronoChoice Details</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo">ChronoChoice</a>
+            <div class="nav-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#discover">Discover</a>
+                <a href="../index.html#compare">Compare</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+<section id="home">
+
+<div class="watch-detail">
+
+    <div class="watch-detail-image" style="flex-direction: column; gap: 1rem; padding: 1rem;">
+        <img src="../assets/a168-1.jpg" alt="Casio A168 front" style="width:100%; max-width:250px;">
+        <img src="../assets/a168-2.jpg" alt="Casio A168 back" style="width:100%; max-width:250px;">
+    </div>
+
+    <div class="watch-detail-info">
+
+        <p style="text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary); font-size:0.8rem;">
+            Quartz • Digital
+        </p>
+
+        <h1>Casio A168WA-1</h1>
+
+        <p class="watch-price" style="font-size:2rem;">₹2,695</p>
+
+        <p style="color:var(--text-secondary); margin-bottom:2rem;">
+            A retro-style digital watch featuring an electro-luminescent backlight,
+            stainless steel bracelet, and classic Casio reliability.
+        </p>
+
+        <div style="background:var(--bg-secondary); padding:1.5rem; margin-bottom:2rem;">
+            <h4 style="margin-bottom:1rem;">Specifications</h4>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+
+                <div>Case Size: 38.6 × 36.3 × 9.6 mm</div>
+                <div>Weight: 50 g</div>
+
+                <div>Material: Resin / Chrome Plated</div>
+                <div>Band: Stainless Steel</div>
+
+                <div>Water Resistance: Basic</div>
+                <div>Battery: 7 years (CR2016)</div>
+
+                <div>Glass: Resin Glass</div>
+                <div>Origin: China</div>
+
+                <div>Stopwatch: 1/100 sec</div>
+                <div>Alarm: Daily + hourly</div>
+
+                <div>Light: EL Backlight</div>
+                <div>Color: Blue Green</div>
+
+                <div>Calendar: Auto</div>
+                <div>Accuracy: ±30 sec/month</div>
+
+                <div>Format: 12/24-hour</div>
+
+            </div>
+        </div>
+
+        <div style="display:flex; gap:1rem;">
+            <button onclick="window.location.href='https://www.casio.com/in/watches/casio/product.A168WA-1/'"
+                class="btn" style="flex:1;">
+                Buy Now
+            </button>
+
+            <button onclick="addToCompareFromDetail(6)" id="compBtn"
+                class="btn btn-outline" style="flex:1;">
+                Add to Compare
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</section>
+</main>
+
+<script src="../script.js"></script>
+
+<script>
+function addToCompareFromDetail(id) {
+    let list = JSON.parse(localStorage.getItem('chrono_compare')) || [];
+    if (list.includes(id)) {
+        list = list.filter(i => i !== id);
+        document.getElementById('compBtn').textContent = "Add to Compare";
+    } else {
+        if (list.length >= 3) return alert("Max 3 items");
+        list.push(id);
+        document.getElementById('compBtn').textContent = "Remove from Compare";
+    }
+    localStorage.setItem('chrono_compare', JSON.stringify(list));
+}
+</script>
+
+</body>
+</html>
