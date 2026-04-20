@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seiko Prospex Speedtimer SSC963P1 | ChronoChoice Details</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">ChronoChoice</a>
+            <div class="nav-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#discover">Discover</a>
+                <a href="../index.html#compare">Compare</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="home">
+
+        <div class="watch-detail">
+
+            <div class="watch-detail-image" style="flex-direction: column; gap: 1rem; padding: 1rem;">
+                <img src="../assets/prospex-1.jpg" alt="Seiko Speedtimer front" style="width: 100%; max-width: 250px;">
+                <img src="../assets/prospex-2.jpg" alt="Seiko Speedtimer back" style="width: 100%; max-width: 250px;">
+            </div>
+
+            <div class="watch-detail-info">
+
+                <p style="text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    Solar • Sports Chronograph
+                </p>
+
+                <h1>Seiko Prospex Speedtimer SSC963P1</h1>
+
+                <p class="watch-price" style="font-size: 2rem; margin-bottom: 2rem;">
+                    ₹70,000
+                </p>
+
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                    A modern Prospex chronograph featuring a distinctive pale pink dial, solar-powered movement, 
+                    and precision timing functions. Designed for performance with everyday wearability.
+                </p>
+
+                <div style="background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem; text-transform: uppercase; font-size: 0.75rem;">
+                        Specifications
+                    </h4>
+
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; font-size: 0.9rem;">
+
+                        <div><span style="color:#999;">Gender:</span> Men</div>
+                        <div><span style="color:#999;">Movement:</span> Solar (Calibre V192)</div>
+
+                        <div><span style="color:#999;">Accuracy:</span> ±15 sec/month</div>
+                        <div><span style="color:#999;">Power:</span> 6 months / 2 years (power save)</div>
+
+                        <div><span style="color:#999;">Case:</span> Stainless Steel</div>
+                        <div><span style="color:#999;">Shape:</span> Round</div>
+
+                        <div><span style="color:#999;">Diameter:</span> 39.0 mm</div>
+                        <div><span style="color:#999;">Thickness:</span> 13.3 mm</div>
+
+                        <div><span style="color:#999;">Length:</span> 45.5 mm</div>
+                        <div><span style="color:#999;">Lug Width:</span> 20 mm</div>
+
+                        <div><span style="color:#999;">Bracelet Length:</span> 205 mm</div>
+                        <div><span style="color:#999;">Dial:</span> Pale Pink</div>
+
+                        <div><span style="color:#999;">Glass:</span> AR-coated (inner)</div>
+                        <div><span style="color:#999;">Water Resistance:</span> 10 bar</div>
+
+                        <div><span style="color:#999;">Clasp:</span> Three-fold push button</div>
+
+                        <div><span style="color:#999;">Band:</span> Stainless Steel</div>
+                        <div><span style="color:#999;">Band Color:</span> Steel</div>
+
+                        <div><span style="color:#999;">Functions:</span></div>
+                        <div>
+                            24-hour hand, Chronograph (60 min, 1/5 sec), Date display,<br>
+                            Small seconds, Power reserve indicator,<br>
+                            Overcharge prevention
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button 
+                        onclick="window.location.href='https://seikowatches.co.in/collections/new-arrivals/products/seiko-prospex-speedtimer-youngtimer-in-pale-pink-ssc963p1'"
+                        class="btn" 
+                        style="flex: 1;">
+                        Buy Now
+                    </button>
+
+                    <button 
+                        onclick="addToCompareFromDetail(7)" 
+                        id="compBtn" 
+                        class="btn btn-outline" 
+                        style="flex: 1;">
+                        Add to Compare
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<script src="script.js"></script>
+
+<script>
+function addToCompareFromDetail(id) {
+    let list = JSON.parse(localStorage.getItem('chrono_compare')) || [];
+    if (list.includes(id)) {
+        list = list.filter(item => item !== id);
+        document.getElementById('compBtn').textContent = "Add to Compare";
+    } else {
+        if (list.length >= 3) {
+            alert("Max 3 items.");
+            return;
+        }
+        list.push(id);
+        document.getElementById('compBtn').textContent = "Remove from Compare";
+    }
+    localStorage.setItem('chrono_compare', JSON.stringify(list));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const list = JSON.parse(localStorage.getItem('chrono_compare')) || [];
+    if (list.includes(7)) {
+        document.getElementById('compBtn').textContent = "Remove from Compare";
+    }
+});
+</script>
+
+</body>
+</html>
