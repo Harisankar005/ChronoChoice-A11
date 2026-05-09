@@ -3,22 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoChoice | Minimalist Watch Discovery</title>
+    <meta name="description" content="ChronoChoice: A curated discovery platform designed to help you choose the right watch with clarity.">
+    <meta name="keywords" content="watches, minimalist, casio, seiko, timepieces, horology">
+    <meta property="og:title" content="ChronoChoice | Minimalist Watch Discovery">
+    <meta property="og:image" content="assets/og-image.jpg">
+    
+    <title>ChronoChoice | Minimalist Watch Discovery ⌚</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .internal-style-highlight {
+            border-left: 4px solid var(--text-primary);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="container">
         <nav>
-            <a href="#" class="logo" onclick="navigateTo('home'); return false;">ChronoChoice</a>
+            <a href="#home" class="logo" onclick="navigateTo('home'); return false;">ChronoChoice</a>
             <div class="nav-links">
                 <a href="#home" onclick="navigateTo('home'); return false;">Home</a>
                 <a href="#discover" onclick="navigateTo('discover'); return false;">Discover</a>
                 <a href="#compare" onclick="navigateTo('compare'); return false;">Compare</a>
                 <a href="#reviews" onclick="navigateTo('reviews'); return false;">Reviews</a>
                 <a href="#about" onclick="navigateTo('about'); return false;">About</a>
+                <a href="#contact" onclick="navigateTo('contact'); return false;">Contact</a>
             </div>
+            <button id="themeToggle" class="btn btn-outline" style="padding: 0.4rem 0.8rem; font-size: 0.7rem;">Dark Mode</button>
         </nav>
     </div>
 </header>
@@ -28,12 +46,13 @@
     <section id="home">
         <div class="hero">
             <h1>Precision in Simplicity.</h1>
+            <h2 style="display:none;">Welcome</h2> 
             <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem;">
                 A curated discovery platform designed to help you choose the right watch with clarity.
                 No clutter, no confusion — just trusted timepieces.
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center;">
-                <button onclick="navigateTo('discover')" class="btn">Start Discovery</button>
+                <button onclick="navigateTo('discover')" class="btn" id="startBtn">Start Discovery</button>
                 <button onclick="navigateTo('compare')" class="btn btn-outline">Go to Compare</button>
             </div>
         </div>
@@ -53,17 +72,17 @@
 
         <div class="controls-bar">
             <div class="filter-group">
-                <label>Search</label>
+                <label for="searchInput">Search</label>
                 <input type="text" id="searchInput" placeholder="Search watches...">
             </div>
 
             <div class="filter-group">
-                <label>Budget: <span id="budgetValue">₹200,000</span></label>
+                <label for="budgetSlider">Budget: <span id="budgetValue">₹200,000</span></label>
                 <input type="range" id="budgetSlider" min="1000" max="200000" step="500" value="200000">
             </div>
 
             <div class="filter-group">
-                <label>Movement</label>
+                <label for="movementFilter">Movement</label>
                 <select id="movementFilter">
                     <option value="all">All</option>
                     <option value="Quartz">Quartz</option>
@@ -74,7 +93,7 @@
             </div>
 
             <div class="filter-group">
-                <label>Sort</label>
+                <label for="sortFilter">Sort</label>
                 <select id="sortFilter">
                     <option value="default">Default</option>
                     <option value="low">Price: Low to High</option>
@@ -100,18 +119,26 @@
         
         <div class="compare-table-container">
             <table class="compare-table">
-                <tbody id="compareTableBody"></tbody>
+                <caption>Side-by-side Technical Specification Comparison</caption>
+                <thead id="compareTableHead">
+                    <tr><th scope="col" colspan="4">Watch Specifications</th></tr>
+                </thead>
+                <tbody id="compareTableBody">
+                    <tr><td colspan="4">Select watches to compare</td></tr>
+                </tbody>
+                <tfoot id="compareTableFoot">
+                    <tr><td colspan="4" style="text-align: right; font-size: 0.8rem; color: var(--text-secondary);">*Prices subject to change based on market availability.</td></tr>
+                </tfoot>
             </table>
         </div>
     </section>
 
     <section id="reviews" class="hidden">
-    <h2>Collector Sentiment</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 3rem;">
-        Feedback based on enthusiast experience, reliability, and long-term usage.
-    </p>
-
-    <div class="reviews-grid">
+        <h2>Collector Sentiment</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 3rem;">
+            Feedback based on enthusiast experience, reliability, and long-term usage.
+        </p>
+        <div class="reviews-grid">
 
         <div class="review-card">
             <h3>"F-91W: unbeatable value"</h3>
@@ -163,44 +190,286 @@
             <p>Super Titanium build makes it lightweight yet strong. Very refined overall.</p>
         </div>
 
-    </div>
-</section>
+        <div class="review-card">
+            <h3>"Seiko SRPE53 is a daily winner"</h3>
+            <p>Versatile, reliable, and great lume. One of the best entry mechanical watches.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Tsuyosa is bold and fun"</h3>
+            <p>Vibrant dial with integrated bracelet styling. Feels modern and unique.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Presage Irish Coffee is classy"</h3>
+            <p>Beautiful textured dial with warm tones. A perfect affordable dress watch.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"PRX is a modern icon"</h3>
+            <p>Slim profile, integrated bracelet, and long power reserve. Extremely popular for a reason.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Ventura stands out instantly"</h3>
+            <p>Unconventional design with strong identity. Not for everyone, but very iconic.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Alpinist is adventure-ready"</h3>
+            <p>Green dial and compass bezel give it character. A true field/sport hybrid.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Le Locle is timeless elegance"</h3>
+            <p>Classic dress watch with refined finishing. Perfect for formal wear.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Khaki Navy is tough and sporty"</h3>
+            <p>Dive-ready build with excellent legibility. Solid all-round sports watch.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Visodate balances heritage and modernity"</h3>
+            <p>Clean dial with vintage inspiration and modern Swiss movement.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Longines Conquest is underrated"</h3>
+            <p>Excellent finishing and high water resistance. A serious everyday sports watch.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Murph is subtle but special"</h3>
+            <p>Simple design with strong story and great proportions. Very wearable.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Promaster Sky is feature-packed"</h3>
+            <p>Solar power with chronograph and aviation styling. Very practical.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"GW-B5600 is smart G-Shock"</h3>
+            <p>Bluetooth + solar + radio sync. One of the most advanced squares.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Timex Q Chronograph feels retro"</h3>
+            <p>Vintage styling with useful chronograph. Great everyday quartz option.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"LCA Reissue is nostalgic"</h3>
+            <p>Unique digital-analog display. A true throwback piece with personality.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Timex Continental is minimal"</h3>
+            <p>Clean design and slim case. Simple, elegant, and easy to wear.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Q Reissue nails vintage vibes"</h3>
+            <p>Compact size and classic design. A faithful recreation done right.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Falcon Eye is distinctive"</h3>
+            <p>Textured dial adds depth. A unique look compared to standard designs.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Boderry Voyager is value-packed"</h3>
+            <p>Titanium case and NH35 movement at this price is hard to beat.</p>
+        </div>
+
+        <div class="review-card">
+            <h3>"Timex Jet is casual comfort"</h3>
+            <p>Fabric strap and lightweight build make it ideal for daily wear.</p>
+        </div>
+    </section>
 
     <section id="about" class="hidden">
-        <div style="max-width: 700px;">
-            <h2>About ChronoChoice</h2>
+        <div style="max-width: 800px;">
+            <article>
+                <h2>About ChronoChoice</h2>
+                
+                <p class="internal-style-highlight">
+                    ChronoChoice was built with a simple goal: to help people choose the right watch without confusion.
+                </p>
 
-            <p style="margin-bottom: 1.5rem;">
-                ChronoChoice was built with a simple goal: to help people choose the right watch without confusion.
-                The watch market is filled with overwhelming options, marketing noise, and unreliable listings.
-                This platform cuts through that.
-            </p>
+                <p style="margin-bottom: 1.5rem;">
+                    Unlike typical marketplaces, there are no promoted products here. Every watch listed comes from trusted and established brands. No replicas, no fakes, and no misleading listings.
+                </p>
 
-            <p style="margin-bottom: 1.5rem;">
-                Every watch listed here is from a trusted brand and sourced from official or verified platforms.
-                There are no replicas, no fakes, and no misleading listings.
-            </p>
+                <div style="margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem;">
+                    <h3>Horology in Motion</h3>
+                    <video controls poster="https://via.placeholder.com/800x400.png?text=Watch+Movement+Poster" style="width: 100%; border-radius: 4px;">
+                        <source src="assets/intro-to-horology.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
 
-            <p style="margin-bottom: 1.5rem;">
-                We remain completely unbiased. Watches are not promoted based on sponsorships or commissions.
-                Instead, they are selected based on build quality, reliability, and real-world usability.
-            </p>
+                    <h3>Podcast: The Art of Watchmaking</h3>
+                    <audio controls style="width: 100%;">
+                        <source src="assets/horology.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
 
-            <p>
-                ChronoChoice is designed for clarity — helping you make confident, informed decisions when buying a watch.
-            </p>
+                <details style="margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-secondary); border-radius: 8px;">
+                    <summary style="font-weight: 600; cursor: pointer; font-size: 1.1rem; color: var(--text-primary);">Read our strict selection criteria</summary>
+                    
+                    <div style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
+                        <p style="margin-bottom: 1rem;">Our curation process is intentionally rigorous. To be featured on ChronoChoice, a timepiece must excel across four core pillars:</p>
+                        
+                        <ul style="list-style-position: inside; margin-bottom: 1.5rem; padding-left: 0.5rem;">
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong style="color: var(--text-primary);">Movement Reliability:</strong> We prioritize proven, easily serviceable calibers (e.g., ETA, Sellita, Seiko 4R/6R, Miyota) or innovative quartz and solar technologies.
+                            </li>
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong style="color: var(--text-primary);">Build Quality & Finishing:</strong> Strict evaluation of case materials (such as 316L stainless steel or titanium), crystal type (sapphire is highly preferred), and dial execution.
+                            </li>
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong style="color: var(--text-primary);">Value Proposition:</strong> We ensure the watch offers exceptional features relative to its price bracket. We actively filter out "fashion watches" that rely on artificial markups.
+                            </li>
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong style="color: var(--text-primary);">Brand Heritage:</strong> We spotlight established brands with legitimate horological history, original designs, and strong after-sales support records.
+                            </li>
+                        </ul>
+                        
+                        <p style="font-style: italic;">Note: We do not accept paid placements or sponsorships. Every watch listed is here because it earned its place.</p>
+                    </div>
+                </details>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-secondary); border-radius: 8px;">
+                    <h3>Team & Collaboration Breakdown</h3>
+                    <p style="margin-bottom: 1rem;">This platform was developed by a three-person team, ensuring an equal distribution of work across all technical requirements:</p>
+                    
+                    <ul style="list-style-position: inside; margin-bottom: 1.5rem; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.5rem;">
+                            <strong>Harisankar (Project Lead & JS Developer):</strong> Handled all DOM manipulation, state management (filtering/sorting), dynamic table generation, and form validation regex. <em>(45% Contribution)</em>
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <strong>Rohan S (UI/UX & CSS Architect):</strong> Built the responsive grid system, dark mode toggle functionality, advanced CSS selectors, and custom form styling. <em>(55% Contribution)</em>
+                        </li>
+                    </ul>
+                    
+                    <p style="font-size: 0.9rem; font-style: italic;">
+                        * Full commit history, branch management, and peer-reviewed pull requests are documented in our 
+                        <a href="https://github.com/Harisankar005/ChronoChoice-A11" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary);">GitHub repository</a>.
+                    </p>
+                </div>
+
+            </article>
         </div>
+    </section>
+
+    <section id="contact" class="hidden">
+        <h2>Collector Inquiries</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Reach out for sourcing rare timepieces or platform feedback.</p>
+
+        <form id="inquiryForm" class="advanced-form" novalidate>
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userName">Full Name <span class="req">*</span></label>
+                        <input type="text" id="userName" name="userName" required pattern="[A-Za-z\s]{3,}" placeholder="e.g. John Doe">
+                        <span class="error-msg">Please enter a valid name (letters only).</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email Address <span class="req">*</span></label>
+                        <input type="email" id="userEmail" name="userEmail" required placeholder="john@example.com">
+                        <span class="error-msg">Please enter a valid email address.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userPhone">Phone Number</label>
+                        <input type="tel" id="userPhone" name="userPhone" pattern="[0-9]{10}" placeholder="1234567890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="collectionDate">Date Started Collecting</label>
+                        <input type="date" id="collectionDate" name="collectionDate" max="2026-05-10">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset style="margin-top: 2rem;">
+                <legend>Watch Preferences</legend>
+                
+                <div class="form-group">
+                    <label for="favBrand">Favorite Brand (Type to search)</label>
+                    <input list="brands" id="favBrand" name="favBrand" placeholder="e.g. Seiko">
+                    <datalist id="brands">
+                        <option value="Seiko">
+                        <option value="Casio">
+                        <option value="Tissot">
+                        <option value="Hamilton">
+                        <option value="Citizen">
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="collectionSize">Current Collection Size</label>
+                    <input type="number" id="collectionSize" name="collectionSize" min="0" max="1000" placeholder="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Movement Type</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="prefMovement" value="Automatic" checked> Automatic</label>
+                        <label><input type="radio" name="prefMovement" value="Quartz"> Quartz</label>
+                        <label><input type="radio" name="prefMovement" value="Mechanical"> Mechanical</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiryType">Inquiry Type</label>
+                    <select id="inquiryType" name="inquiryType" required>
+                        <option value="">-- Select an option --</option>
+                        <option value="sourcing">Sourcing a Watch</option>
+                        <option value="feedback">Platform Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="userMessage">Message</label>
+                    <textarea id="userMessage" name="userMessage" rows="4" placeholder="Tell us what you're looking for..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                        Subscribe to ChronoChoice weekly newsletter
+                    </label>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn" style="margin-top: 1.5rem;">Submit Inquiry</button>
+            <div id="formSuccess" class="hidden" style="color: green; margin-top: 1rem; font-weight: 600;">Message sent successfully!</div>
+        </form>
     </section>
 
 </main>
 
 <footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; color: var(--text-secondary); font-size: 0.8rem;">
-        <p>&copy; 2026 ChronoChoice Platform</p>
-
-        <a href="https://github.com/Harisankar005/ChronoChoice-A11" target="_blank" class="btn btn-outline">
-            View on GitHub
-        </a>
+        <p style="font-weight: 600;">© 2026 ChronoChoice Platform</p>
+        
+        <div>
+            <a href="https://github.com/Harisankar005/ChronoChoice-A11" target="_blank" class="btn btn-outline" rel="noopener noreferrer">
+                View on GitHub
+            </a>
+            <a href="#home" class="btn" style="margin-left: 1rem;">Back to Top</a>
+        </div>
     </div>
 </footer>
 
