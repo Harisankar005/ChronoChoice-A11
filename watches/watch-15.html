@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hamilton Ventura Chrono Quartz - Detailed specifications and overview.">
+    <meta name="keywords" content="Hamilton Ventura, chronograph, quartz watch, ChronoChoice">
+    <meta property="og:title" content="Hamilton Ventura Chrono | ChronoChoice Details">
+    <meta property="og:image" content="../assets/ventura-1.jpg">
+    <title>Hamilton Ventura Chrono Quartz | ChronoChoice Details</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="../index.html" class="logo">ChronoChoice</a>
+            <div class="nav-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#discover">Discover</a>
+                <a href="../index.html#compare">Compare</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="home">
+        <article class="watch-detail">
+            
+            <div class="watch-detail-image" style="flex-direction: column; gap: 1rem; padding: 1rem;">
+                <img src="../assets/ventura-1.jpg" alt="Hamilton Ventura detailed front view" width="250" height="250" style="width: 100%; max-width: 250px; object-fit: contain;">
+                <img src="../assets/ventura-2.jpg" alt="Hamilton Ventura detailed side view" width="250" height="250" style="width: 100%; max-width: 250px; object-fit: contain;">
+            </div>
+
+            <div class="watch-detail-info">
+                <p style="text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.5rem;">Quartz • Dress</p>
+                <h1>Hamilton Ventura Chrono Quartz</h1>
+                <h2 class="watch-price" style="font-size: 2rem; margin-bottom: 2rem; font-weight: 600;">₹1,29,000</h2>
+
+                <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                    An iconic and unconventional timepiece with a distinctive triangular case. The Ventura Chronograph blends bold design with precision quartz performance, making it one of the most recognizable watches ever created.
+                </p>
+
+                <div style="background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; text-transform: uppercase; font-size: 0.75rem;">Specifications</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                        <div><span style="color:#999;">Movement:</span> Quartz (Cal. 251.474)</div>
+                        <div><span style="color:#999;">Functions:</span> Chronograph, Date</div>
+                        <div><span style="color:#999;">Size:</span> 32 × 50 mm</div>
+                        <div><span style="color:#999;">Glass:</span> Sapphire</div>
+                        <div><span style="color:#999;">Water Resistance:</span> 50 m</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button onclick="window.location.href='https://www.hamiltonwatch.com/en-in/h24432141-ventura-chrono-quartz.html'" class="btn" style="flex: 1;">Buy Now</button>
+                    <button onclick="addToCompareFromDetail(15)" id="compBtn" class="btn btn-outline" style="flex: 1;">Add to Compare</button>
+                </div>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
+    <div class="container" style="color: var(--text-secondary); font-size: 0.8rem; text-align: center;">
+        <p style="font-weight: 600;">© 2026 ChronoChoice Platform</p>
+    </div>
+</footer>
+
+<script src="../script.js"></script>
+<script>
+function addToCompareFromDetail(id) {
+    let list = JSON.parse(localStorage.getItem('chrono_compare')) || [];
+    if (list.includes(id)) {
+        list = list.filter(item => item !== id);
+        document.getElementById('compBtn').textContent = "Add to Compare";
+    } else {
+        if (list.length >= 3) { alert("Max 3 items."); return; }
+        list.push(id);
+        document.getElementById('compBtn').textContent = "Remove from Compare";
+    }
+    localStorage.setItem('chrono_compare', JSON.stringify(list));
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const list = JSON.parse(localStorage.getItem('chrono_compare')) || [];
+    if (list.includes(15)) document.getElementById('compBtn').textContent = "Remove from Compare";
+});
+</script>
+</body>
+</html>
