@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ChronoChoice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>...</header> <main class="container">
+        <h1>Connect With Us</h1>
+        
+        <form id="contactForm" action="#" method="POST">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="filter-group">
+                    <label for="userName">Full Name</label>
+                    <input type="text" id="userName" name="userName" required placeholder="John Doe">
+                </div>
+                <div class="filter-group">
+                    <label for="userEmail">Email Address</label>
+                    <input type="email" id="userEmail" name="userEmail" required>
+                </div>
+                <div class="filter-group">
+                    <label for="userPhone">Phone (Format: 12345-67890)</label>
+                    <input type="tel" id="userPhone" name="userPhone" pattern="[0-9]{5}-[0-9]{5}">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Inquiry Details</legend>
+                <label>Preferred Brand</label>
+                <input list="brands" name="brand" id="brandChoice">
+                <datalist id="brands">
+                    <option value="Seiko">
+                    <option value="Casio">
+                    <option value="Tissot">
+                    <option value="Hamilton">
+                </datalist>
+
+                <label for="budget">Target Budget (₹)</label>
+                <input type="number" id="budget" name="budget" min="1000" max="1000000">
+
+                <label>Newsletter</label>
+                <input type="checkbox" id="news" name="news" checked>
+            </fieldset>
+
+            <button type="submit" class="btn">Send Inquiry</button>
+        </form>
+
+        <section style="margin-top: 4rem;">
+            <h3>Our Location</h3>
+            <iframe title="ChronoChoice Office" src="https://www.google.com/maps/embed?..." width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
